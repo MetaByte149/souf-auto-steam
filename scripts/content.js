@@ -6,10 +6,16 @@ async function eventOnMultiplyPress(e) {
   // Click the voicemail button
   //TODO: only click voicemail when no other button has been pressed already
   //TODO: do not rely on a list where you have to choose the 2nd option
-  let ls = [];
-  for (const a of document.querySelectorAll("div"))
-    if (a.textContent === "Voicemail") ls.push(a);
-  ls[1].click();
+
+  if (
+    document.getElementsByClassName("title")[0].innerHTML ===
+    "Selecteer resultaatcode"
+  ) {
+    let ls = [];
+    for (const a of document.querySelectorAll("div"))
+      if (a.textContent === "Voicemail") ls.push(a);
+    ls[1].click();
+  }
 
   // Change middle text
   document.getElementsByClassName("boxLabel")[0].innerHTML =
