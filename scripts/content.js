@@ -1,19 +1,40 @@
 async function eventOnMultiplyPress(e) {
   console.log("BUTTON IS PRESSED");
-  // Check if right button is pressed
-  if (e.code !== "NumpadMultiply") return;
-
-  // Click the voicemail button
-  //TODO: do not rely on a list where you have to choose the 2nd option
+  const options = [
+    "NumpadMultiply",
+    "NumpadDivide",
+    "NumpadSubtract",
+    "NumpadAdd",
+  ];
+  if (!options.includes(e.code)) return;
 
   if (
     document.getElementsByClassName("title")[0].innerHTML ===
     "Selecteer resultaatcode"
   ) {
-    let ls = [];
-    for (const a of document.querySelectorAll("div"))
-      if (a.textContent === "Voicemail") ls.push(a);
-    ls[1].click();
+    let _ls = [];
+    switch (e.code) {
+      case "NumpadMultiply":
+        for (const a of document.querySelectorAll("div"))
+          if (a.textContent === "Voicemail") _ls.push(a);
+        break;
+
+      case "NumpadDivide":
+        for (const a of document.querySelectorAll("div"))
+          if (a.textContent === "Geen Interesse") _ls.push(a);
+        break;
+
+      case "NumpadSubtract":
+        for (const a of document.querySelectorAll("div"))
+          if (a.textContent === "Reeds Zonnepanelen") _ls.push(a);
+        break;
+
+      case "NumpadAdd":
+        for (const a of document.querySelectorAll("div"))
+          if (a.textContent === "Huurder") _ls.push(a);
+        break;
+    }
+    _ls[1].click();
   }
 
   // Change middle text
