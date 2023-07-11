@@ -4,7 +4,6 @@ async function eventOnMultiplyPress(e) {
   if (e.code !== "NumpadMultiply") return;
 
   // Click the voicemail button
-  //TODO: only click voicemail when no other button has been pressed already
   //TODO: do not rely on a list where you have to choose the 2nd option
 
   if (

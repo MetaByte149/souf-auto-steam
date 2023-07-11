@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Souf AutoSteam",
   "version": "0.1",
-  "description": "An app that smoothes out the steam expierence",
+  "description": "An app that smoothes out the steam experience",
 
   "icons": {
     "16": "assets/icon-16.png",
