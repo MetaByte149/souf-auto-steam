@@ -1,4 +1,4 @@
-async function eventOnMultiplyPress(e) {
+async function eventOnKeyUp(e) {
   console.log("BUTTON IS PRESSED");
   const options = [
     "NumpadMultiply",
@@ -46,5 +46,5 @@ async function eventOnMultiplyPress(e) {
   document.getElementsByClassName("btn-save-record-bg")[0].click();
 }
 
-document.removeEventListener("keyup", eventOnMultiplyPress);
-document.addEventListener("keyup", eventOnMultiplyPress);
+document.removeEventListener("keyup", eventOnKeyUp);
+document.addEventListener("keyup", eventOnKeyUp);
