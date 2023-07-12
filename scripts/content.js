@@ -4,9 +4,11 @@ popupDiv.style.position = "fixed";
 popupDiv.style.bottom = "10px";
 popupDiv.style.left = "10px";
 popupDiv.style.width = "300px";
-popupDiv.style.height = "180px";
+popupDiv.style.height = "max-content";
 popupDiv.style.border = "5px solid #177A8E";
-popupDiv.style.backgroundColor = "#10BBC4";
+// popupDiv.style.backgroundColor = "#10bbc4";
+popupDiv.style.background =
+  "linear-gradient(to top right, #177A8E, #10bbc4, #D0D0ff)";
 popupDiv.style.opacity = 0.95;
 popupDiv.style.color = "#FF0000";
 popupDiv.style.padding = "2px";
@@ -33,11 +35,11 @@ function eventOnKeyUp(e) {
       e.code
     )
   )
-    markCustomerAndGoNext(e.code);
+    markCustomerAndGoNext(e.code, e.key);
   if (e.code === "NumpadDecimal") togglePopupDiv();
 }
 
-async function markCustomerAndGoNext(keyCode) {
+async function markCustomerAndGoNext(keyCode, key) {
   if (
     document.getElementsByClassName("title")[0].innerHTML ===
     "Selecteer resultaatcode"
@@ -70,7 +72,7 @@ async function markCustomerAndGoNext(keyCode) {
   // Change middle text
   document.querySelector(
     ".boxLabel"
-  ).innerHTML = `<h1><center><b> Op naar de volgende 🥰 </b></center></h1><br><br><h2>U hebt op ${keyCode} gedrukt!</h2`;
+  ).innerHTML = `<h1><center><b> Op naar de volgende 🥰 </b></center></h1><br><br><h2>U hebt op ${key} gedrukt!</h2`;
 
   // Go to the next client
   await new Promise((resolve) => setTimeout(() => resolve(), 500));
