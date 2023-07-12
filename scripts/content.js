@@ -70,7 +70,7 @@ async function markCustomerAndGoNext(keyCode) {
   // Change middle text
   document.querySelector(
     ".boxLabel"
-  ).textContent = `<h1><center><b> Op naar de volgende 🥰 </b></center></h1><br><br><h2>U hebt op ${keyCode} gedrukt!</h2`;
+  ).innerHTML = `<h1><center><b> Op naar de volgende 🥰 </b></center></h1><br><br><h2>U hebt op ${keyCode} gedrukt!</h2`;
 
   // Go to the next client
   await new Promise((resolve) => setTimeout(() => resolve(), 500));
