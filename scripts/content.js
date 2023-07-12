@@ -1,3 +1,5 @@
+let disappearingPopup = false;
+
 console.log("LOADED SOUF");
 const popupDiv = document.createElement("div");
 popupDiv.style.position = "fixed";
@@ -80,7 +82,10 @@ async function markCustomerAndGoNext(keyCode, key) {
 }
 
 function togglePopupDiv() {
-  console.log(popupDiv.style.visibility);
+  // console.log(popupDiv.style.visibility);
+  // if (popupDiv.style.visibility === "visible")
+  //   popupDiv.style.visibility = "hidden";
+  // else popupDiv.style.visibility = "visible";
   if (popupDiv.style.visibility === "visible")
     popupDiv.style.visibility = "hidden";
   else popupDiv.style.visibility = "visible";
@@ -88,3 +93,7 @@ function togglePopupDiv() {
 
 document.removeEventListener("keyup", eventOnKeyUp);
 document.addEventListener("keyup", eventOnKeyUp);
+
+let interval = setInterval(loop, 1000 / 30);
+
+function loop() {}
