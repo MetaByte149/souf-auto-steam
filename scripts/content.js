@@ -8,7 +8,6 @@ popupDiv.style.left = "10px";
 popupDiv.style.width = "300px";
 popupDiv.style.height = "max-content";
 popupDiv.style.border = "5px solid #177A8E";
-// popupDiv.style.backgroundColor = "#10bbc4";
 popupDiv.style.background =
   "linear-gradient(to top right, #177A8E, #10bbc4, #D0D0ff)";
 popupDiv.style.opacity = 0.95;
@@ -38,7 +37,7 @@ function eventOnKeyUp(e) {
     )
   )
     markCustomerAndGoNext(e.code, e.key);
-  if (e.code === "NumpadDecimal") togglePopupDiv();
+  if (e.code === "NumpadDecimal") disappearingPopup = !disappearingPopup;
 }
 
 async function markCustomerAndGoNext(keyCode, key) {
@@ -81,19 +80,20 @@ async function markCustomerAndGoNext(keyCode, key) {
   document.getElementsByClassName("btn-save-record-bg")[0].click();
 }
 
-function togglePopupDiv() {
-  // console.log(popupDiv.style.visibility);
-  // if (popupDiv.style.visibility === "visible")
-  //   popupDiv.style.visibility = "hidden";
-  // else popupDiv.style.visibility = "visible";
-  if (popupDiv.style.visibility === "visible")
-    popupDiv.style.visibility = "hidden";
-  else popupDiv.style.visibility = "visible";
-}
-
 document.removeEventListener("keyup", eventOnKeyUp);
 document.addEventListener("keyup", eventOnKeyUp);
 
-let interval = setInterval(loop, 1000 / 30);
+let interval = setInterval(loop, 1000 / 2);
 
-function loop() {}
+function loop() {
+  console.log(disappearingPopup);
+  console.log(popupDiv.style.opacity);
+  // Disappearing popup
+  if (disappearingPopup) {
+    if (popupDiv.style.opacity < 0.05) popupDiv.style.opacity = 0;
+    else popupDiv.style.opacity -= 0.03;
+  } else {
+    if (popupDiv.style.opacity > 0.9) popupDiv.style.opacity = 0.95;
+    else popupDiv.style.opacity = popupDiv.style.opacity + 0.03;
+  }
+}
