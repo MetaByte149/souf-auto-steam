@@ -6,7 +6,6 @@ popupDiv.style.left = "10px";
 popupDiv.style.width = "300px";
 popupDiv.style.height = "max-content";
 popupDiv.style.border = "5px solid #177A8E";
-// popupDiv.style.backgroundColor = "#10bbc4";
 popupDiv.style.background =
   "linear-gradient(to top right, #177A8E, #10bbc4, #D0D0ff)";
 popupDiv.style.opacity = 0.95;
