@@ -46,5 +46,40 @@ async function eventOnKeyUp(e) {
   document.getElementsByClassName("btn-save-record-bg")[0].click();
 }
 
+function eventOnLoad(e) {
+  console.log("LOADED SOOUF");
+  const newDiv = document.createElement("div");
+  newDiv.style.position = "fixed";
+  newDiv.style.bottom = "10px";
+  newDiv.style.left = "10px";
+  newDiv.style.width = "300px";
+  newDiv.style.height = "180px";
+  newDiv.style.border = "5px solid #177A8E";
+  newDiv.style.backgroundColor = "#10BBC4";
+  newDiv.style.opacity = 0.95;
+  newDiv.style.color = "#FF0000";
+  newDiv.style.padding = "2px";
+
+  const p = document.createElement("p");
+  p.style.position = "relative";
+  p.style.height = "100%";
+  p.style.fontSize = "20px";
+  p.style.whiteSpace = "pre-line";
+  p.style.textAlign = "center";
+  p.style.opacity = 1;
+  p.style.fontWeight = "bold";
+
+  p.appendChild(
+    document.createTextNode(
+      "/ Geen interesse\n* Voicemail\n- Reeds zonnepanelen\n+ Huurder"
+    )
+  );
+
+  newDiv.appendChild(p);
+  document.body.appendChild(newDiv);
+}
+
 document.removeEventListener("keyup", eventOnKeyUp);
 document.addEventListener("keyup", eventOnKeyUp);
+
+document.addEventListener("load", eventOnLoad);
