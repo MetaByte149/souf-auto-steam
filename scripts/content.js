@@ -46,8 +46,8 @@ async function eventOnKeyUp(e) {
   document.getElementsByClassName("btn-save-record-bg")[0].click();
 }
 
-function eventOnLoad(e) {
-  console.log("LOADED SOOUF");
+function eventOnLoad() {
+  console.log("LOADED SOUF");
   const newDiv = document.createElement("div");
   newDiv.style.position = "fixed";
   newDiv.style.bottom = "10px";
@@ -68,18 +68,14 @@ function eventOnLoad(e) {
   p.style.textAlign = "center";
   p.style.opacity = 1;
   p.style.fontWeight = "bold";
-
-  p.appendChild(
-    document.createTextNode(
-      "/ Geen interesse\n* Voicemail\n- Reeds zonnepanelen\n+ Huurder"
-    )
-  );
-
+  p.textContent =
+    "/ Geen interesse\n* Voicemail\n- Reeds zonnepanelen\n+ Huurder";
   newDiv.appendChild(p);
+
   document.body.appendChild(newDiv);
 }
 
 document.removeEventListener("keyup", eventOnKeyUp);
 document.addEventListener("keyup", eventOnKeyUp);
 
-document.addEventListener("load", eventOnLoad);
+eventOnLoad();
