@@ -1,3 +1,33 @@
+console.log("LOADED SOUF");
+const popupDiv = document.createElement("div");
+popupDiv.style.position = "fixed";
+popupDiv.style.bottom = "10px";
+popupDiv.style.left = "10px";
+popupDiv.style.width = "300px";
+popupDiv.style.height = "180px";
+popupDiv.style.border = "5px solid #177A8E";
+popupDiv.style.backgroundColor = "#10BBC4";
+popupDiv.style.opacity = 0.95;
+popupDiv.style.color = "#FF0000";
+popupDiv.style.padding = "2px";
+
+const p = document.createElement("p");
+p.style.position = "relative";
+p.style.height = "100%";
+p.style.fontSize = "20px";
+p.style.whiteSpace = "pre-line";
+p.style.textAlign = "center";
+p.style.opacity = 1;
+p.style.fontWeight = "bold";
+p.textContent =
+  "/ Geen interesse\n* Voicemail\n- Reeds zonnepanelen\n+ Huurder\n\n. verberg dit";
+popupDiv.appendChild(p);
+
+document.body.appendChild(popupDiv);
+
+
+
+
 async function eventOnKeyUp(e) {
   console.log("BUTTON IS PRESSED");
   const options = [
@@ -46,33 +76,9 @@ async function eventOnKeyUp(e) {
   document.getElementsByClassName("btn-save-record-bg")[0].click();
 }
 
-function eventOnLoad() {
-  console.log("LOADED SOUF");
-  const newDiv = document.createElement("div");
-  newDiv.style.position = "fixed";
-  newDiv.style.bottom = "10px";
-  newDiv.style.left = "10px";
-  newDiv.style.width = "300px";
-  newDiv.style.height = "180px";
-  newDiv.style.border = "5px solid #177A8E";
-  newDiv.style.backgroundColor = "#10BBC4";
-  newDiv.style.opacity = 0.95;
-  newDiv.style.color = "#FF0000";
-  newDiv.style.padding = "2px";
 
-  const p = document.createElement("p");
-  p.style.position = "relative";
-  p.style.height = "100%";
-  p.style.fontSize = "20px";
-  p.style.whiteSpace = "pre-line";
-  p.style.textAlign = "center";
-  p.style.opacity = 1;
-  p.style.fontWeight = "bold";
-  p.textContent =
-    "/ Geen interesse\n* Voicemail\n- Reeds zonnepanelen\n+ Huurder";
-  newDiv.appendChild(p);
-
-  document.body.appendChild(newDiv);
+function markCustomerAndGoNext(){
+  
 }
 
 document.removeEventListener("keyup", eventOnKeyUp);
