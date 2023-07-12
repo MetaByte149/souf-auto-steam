@@ -25,25 +25,25 @@ popupDiv.appendChild(p);
 
 document.body.appendChild(popupDiv);
 
+function eventOnKeyUp(e) {
+  console.log(`${e.code} has been pressed!`);
 
+  if (
+    ["NumpadMultiply", "NumpadDivide", "NumpadSubtract", "NumpadAdd"].includes(
+      e.code
+    )
+  )
+    markCustomerAndGoNext(e.code);
+  if (e.code === "NumpadDecimal") togglePopupDiv();
+}
 
-
-async function eventOnKeyUp(e) {
-  console.log("BUTTON IS PRESSED");
-  const options = [
-    "NumpadMultiply",
-    "NumpadDivide",
-    "NumpadSubtract",
-    "NumpadAdd",
-  ];
-  if (!options.includes(e.code)) return;
-
+async function markCustomerAndGoNext(keyCode) {
   if (
     document.getElementsByClassName("title")[0].innerHTML ===
     "Selecteer resultaatcode"
   ) {
     let _ls = [];
-    switch (e.code) {
+    switch (keyCode) {
       case "NumpadMultiply":
         for (const a of document.querySelectorAll("div"))
           if (a.textContent === "Voicemail") _ls.push(a);
@@ -68,20 +68,21 @@ async function eventOnKeyUp(e) {
   }
 
   // Change middle text
-  document.getElementsByClassName("boxLabel")[0].innerHTML =
-    "<h1><center><b> Op naar de volgende 🥰 </b></center></h1><br><br><h2>U hebt op * gedrukt!</h2";
+  document.querySelector(
+    ".boxLabel"
+  ).textContent = `<h1><center><b> Op naar de volgende 🥰 </b></center></h1><br><br><h2>U hebt op ${keyCode} gedrukt!</h2`;
 
   // Go to the next client
   await new Promise((resolve) => setTimeout(() => resolve(), 500));
   document.getElementsByClassName("btn-save-record-bg")[0].click();
 }
 
-
-function markCustomerAndGoNext(){
-  
+function togglePopupDiv() {
+  console.log(popupDiv.style.visibility);
+  if (popupDiv.style.visibility === "visible")
+    popupDiv.style.visibility = "hidden";
+  else popupDiv.style.visibility = "visible";
 }
 
 document.removeEventListener("keyup", eventOnKeyUp);
 document.addEventListener("keyup", eventOnKeyUp);
-
-eventOnLoad();
